@@ -1,0 +1,510 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+  <title>Hotel Atithi | Authentic Kathiyawadi Restaurant</title>
+  <!-- Google Fonts + Font Awesome -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,600;14..32,700&family=Playfair+Display:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: #fefaf5;
+      color: #2e241f;
+      line-height: 1.5;
+      scroll-behavior: smooth;
+    }
+    h1, h2, h3, .logo {
+      font-family: 'Playfair Display', serif;
+      font-weight: 600;
+    }
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+    /* Header */
+    header {
+      background: #fff9f2;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.03);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      border-bottom: 1px solid #f0e4d4;
+    }
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 18px 24px;
+      flex-wrap: wrap;
+    }
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-size: 1.6rem;
+      font-weight: 700;
+      color: #b45f2b;
+    }
+    .logo i {
+      font-size: 2rem;
+      color: #d98c2b;
+    }
+    .nav-links {
+      display: flex;
+      gap: 32px;
+      list-style: none;
+    }
+    .nav-links a {
+      text-decoration: none;
+      font-weight: 500;
+      color: #3e2a23;
+      transition: 0.2s;
+      font-size: 1rem;
+    }
+    .nav-links a:hover {
+      color: #b45f2b;
+      border-bottom: 2px solid #b45f2b;
+      padding-bottom: 4px;
+    }
+    .mobile-menu {
+      display: none;
+      font-size: 1.8rem;
+      cursor: pointer;
+      color: #b45f2b;
+    }
+    /* Buttons */
+    .btn-primary {
+      background-color: #b45f2b;
+      color: white;
+      padding: 12px 28px;
+      border: none;
+      border-radius: 40px;
+      font-weight: 600;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: 0.2s;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      text-decoration: none;
+    }
+    .btn-primary:hover {
+      background-color: #944c1f;
+      transform: translateY(-2px);
+    }
+    .btn-outline {
+      background: transparent;
+      border: 2px solid #b45f2b;
+      color: #b45f2b;
+      padding: 10px 24px;
+      border-radius: 40px;
+      font-weight: 600;
+      text-decoration: none;
+      transition: 0.2s;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .btn-outline:hover {
+      background: #b45f2b;
+      color: white;
+    }
+    /* Hero */
+    .hero {
+      background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('https://images.unsplash.com/photo-1559339352-11d035aa65de?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80');
+      background-size: cover;
+      background-position: center 30%;
+      min-height: 85vh;
+      display: flex;
+      align-items: center;
+      text-align: center;
+      color: white;
+    }
+    .hero-content {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+    .hero-content h1 {
+      font-size: 4rem;
+      margin-bottom: 16px;
+    }
+    .hero-content p {
+      font-size: 1.3rem;
+      margin-bottom: 32px;
+      opacity: 0.95;
+    }
+    /* Sections */
+    section {
+      padding: 80px 0;
+    }
+    .section-title {
+      text-align: center;
+      font-size: 2.5rem;
+      margin-bottom: 16px;
+      color: #2e241f;
+    }
+    .section-sub {
+      text-align: center;
+      color: #7a5a4a;
+      max-width: 700px;
+      margin: 0 auto 48px auto;
+      font-size: 1.1rem;
+    }
+    /* Menu Grid (from 3292.jpg) */
+    .menu-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 30px;
+      margin-top: 20px;
+    }
+    .menu-card {
+      background: white;
+      border-radius: 24px;
+      overflow: hidden;
+      box-shadow: 0 12px 28px rgba(0,0,0,0.05);
+      transition: 0.25s;
+    }
+    .menu-card img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+    }
+    .menu-card h3 {
+      padding: 18px 20px 8px;
+      font-size: 1.3rem;
+    }
+    .menu-card p {
+      padding: 0 20px 20px;
+      color: #5e3e2c;
+    }
+    /* Gallery Grid */
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 28px;
+    }
+    .gallery-card {
+      background: white;
+      border-radius: 24px;
+      overflow: hidden;
+      box-shadow: 0 12px 28px rgba(0,0,0,0.05);
+      transition: 0.25s;
+    }
+    .gallery-card:hover {
+      transform: translateY(-6px);
+    }
+    .gallery-card img {
+      width: 100%;
+      height: 240px;
+      object-fit: cover;
+    }
+    .gallery-card h3 {
+      padding: 18px 20px 8px;
+      font-size: 1.2rem;
+    }
+    .gallery-card p {
+      padding: 0 20px 20px;
+      color: #6f4e38;
+    }
+    /* Features badges (A/C Hall, Pure Veg, Garden) */
+    .features {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 20px;
+      margin: 40px 0 20px;
+    }
+    .feature-badge {
+      background: #f3e9df;
+      padding: 8px 24px;
+      border-radius: 60px;
+      font-weight: 600;
+      color: #b45f2b;
+      font-size: 1rem;
+    }
+    /* Location & Contact */
+    .location-contact {
+      background: #fff4ea;
+    }
+    .two-col {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 48px;
+      justify-content: space-between;
+    }
+    .col {
+      flex: 1;
+      min-width: 260px;
+    }
+    .info-box {
+      background: white;
+      border-radius: 28px;
+      padding: 32px;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.04);
+      margin-bottom: 32px;
+    }
+    .info-box i {
+      font-size: 2rem;
+      color: #b45f2b;
+      margin-bottom: 16px;
+    }
+    .info-box h3 {
+      font-size: 1.5rem;
+      margin-bottom: 16px;
+    }
+    .phone-number {
+      font-size: 1.6rem;
+      font-weight: 700;
+      color: #b45f2b;
+      margin: 20px 0;
+    }
+    .map-container {
+      border-radius: 28px;
+      overflow: hidden;
+      box-shadow: 0 12px 28px rgba(0,0,0,0.08);
+      margin-top: 30px;
+    }
+    iframe {
+      width: 100%;
+      height: 320px;
+      border: 0;
+    }
+    footer {
+      background: #2e241f;
+      color: #e7d9cf;
+      text-align: center;
+      padding: 40px 0;
+    }
+    @media (max-width: 768px) {
+      .nav-links {
+        display: none;
+        width: 100%;
+        flex-direction: column;
+        align-items: center;
+        gap: 20px;
+        padding: 24px 0 16px;
+      }
+      .nav-links.show {
+        display: flex;
+      }
+      .mobile-menu {
+        display: block;
+      }
+      .hero-content h1 {
+        font-size: 2.5rem;
+      }
+      .section-title {
+        font-size: 2rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <nav class="container">
+    <div class="logo">
+      <i class="fas fa-utensils"></i>
+      <span>Hotel Atithi</span>
+    </div>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#home">Home</a></li>
+      <li><a href="#menu">Menu</a></li>
+      <li><a href="#gallery">Gallery</a></li>
+      <li><a href="#location">Map</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <div class="mobile-menu" id="menuToggle">
+      <i class="fas fa-bars"></i>
+    </div>
+  </nav>
+</header>
+
+<main>
+  <!-- Hero Section (matches 3291.jpg & 3282.jpg) -->
+  <section id="home" class="hero">
+    <div class="hero-content">
+      <h1>Welcome To<br>Hotel Atithi</h1>
+      <p>An Authentic Kathiyawadi Experience</p>
+      <p style="font-size: 1rem; max-width: 600px; margin: 0 auto 24px;">A traditional Kathiyawadi open garden restaurant situated on the Ahmedabad-Palanpur Highway, near D-Mart, Esbipura. Experience the authentic flavors of Gujarat in a warm, open-air garden setting.</p>
+      <a href="#menu" class="btn-primary"><i class="fas fa-utensil-spoon"></i> View Our Menu</a>
+    </div>
+  </section>
+
+  <!-- Menu Section (exactly from 3292.jpg) -->
+  <section id="menu">
+    <div class="container">
+      <h2 class="section-title">Discover Our Menu</h2>
+      <p class="section-sub">Savour the authentic Kathiyawadi flavours curated with love.</p>
+      <div class="menu-grid">
+        <div class="menu-card">
+          <img src="https://images.unsplash.com/photo-1546069901-ba9599a7e63c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Thali platter">
+          <h3>Traditional Thali</h3>
+          <p>A platter with grilled vegetables, roasted potatoes, and a side of spiced rice.</p>
+        </div>
+        <div class="menu-card">
+          <img src="https://images.unsplash.com/photo-1547592166-23ac4572ad6f?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Soup">
+          <h3>Seasonal Soup</h3>
+          <p>A bowl of soup with noodles and fresh vegetables.</p>
+        </div>
+        <div class="menu-card">
+          <img src="https://images.unsplash.com/photo-1601050690597-df0568f70950?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Dumplings">
+          <h3>Kathiyawadi Dumplings</h3>
+          <p>A plate of fried dumplings in a spicy sauce.</p>
+        </div>
+        <div class="menu-card">
+          <img src="https://images.unsplash.com/photo-1622973536968-3ead9e780960?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Crispy farsan">
+          <h3>Crispy Farsan Platter</h3>
+          <p>A dish of crispy fried items served in a bowl.</p>
+        </div>
+      </div>
+      <div style="text-align: center; margin-top: 48px;">
+        <a href="#" class="btn-outline"><i class="fas fa-book-open"></i> Our Full Menu</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Gallery Section (from 3293.jpg, 3283,3284,3285,3286) -->
+  <section id="gallery">
+    <div class="container">
+      <h2 class="section-title">Our Gallery</h2>
+      <p class="section-sub">A Visual Journey — Step into our open garden restaurant where tradition meets warmth.</p>
+      
+      <div class="features">
+        <span class="feature-badge"><i class="fas fa-wind"></i> A/C HALL</span>
+        <span class="feature-badge"><i class="fas fa-leaf"></i> PURE VEG</span>
+        <span class="feature-badge"><i class="fas fa-tree"></i> GARDEN</span>
+      </div>
+
+      <div class="gallery-grid">
+        <div class="gallery-card">
+          <img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Hotel Atithi Entrance">
+          <h3>Hotel Atithi Entrance</h3>
+          <p>Traditional wooden gateway with vibrant torans.</p>
+        </div>
+        <div class="gallery-card">
+          <img src="https://images.unsplash.com/photo-1551632436-cbf8dd35adfa?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Hotel at Night">
+          <h3>Hotel at Night</h3>
+          <p>Magical evenings under festoon lights.</p>
+        </div>
+        <div class="gallery-card">
+          <img src="https://images.unsplash.com/photo-1600597383697-1b5fcadc3f6c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="I Love Palanpur">
+          <h3>I Love Palanpur</h3>
+          <p>A tribute to our city's spirit.</p>
+        </div>
+        <div class="gallery-card">
+          <img src="https://images.unsplash.com/photo-1602343168117-bb8ffe3e2e9f?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Garden Huts">
+          <h3>Garden Huts</h3>
+          <p>Private dining huts with rustic charm.</p>
+        </div>
+        <div class="gallery-card">
+          <img src="https://images.unsplash.com/photo-1598903229659-6c0a886b0c5c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Garden Fountain">
+          <h3>Garden Fountain</h3>
+          <p>Soothing water feature in lush greens.</p>
+        </div>
+        <div class="gallery-card">
+          <img src="https://images.unsplash.com/photo-1532710093739-9470ac59c02f?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Birthday Decoration">
+          <h3>Birthday Decoration</h3>
+          <p>We make your celebrations memorable.</p>
+        </div>
+      </div>
+      <div style="text-align: center; margin-top: 48px;">
+        <a href="#" class="btn-outline"><i class="fas fa-images"></i> View Full Gallery</a>
+        <p style="margin-top: 12px; font-size: 0.9rem;">Tap to see all photos</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Location & Map (matches 3295,3296,3297,3299,3287,3288) -->
+  <section id="location" class="location-contact">
+    <div class="container">
+      <h2 class="section-title">Find Us</h2>
+      <p class="section-sub">Come & enjoy the authentic Kathiyawadi thali in a serene garden setup.</p>
+      <div class="two-col">
+        <div class="col">
+          <div class="info-box">
+            <i class="fas fa-map-marker-alt"></i>
+            <h3>Hotel Atithi</h3>
+            <p>Ahmedabad-Palanpur Highway, Near D Mart,<br> Esbipura, Palanpur, Gujarat 385001</p>
+            <a href="https://maps.google.com/?q=Ahmedabad-Palanpur+Highway,+Near+D+Mart,+Esbipura,+Palanpur,+Gujarat+385001" target="_blank" class="btn-outline" style="margin-top: 16px; display: inline-block;"><i class="fas fa-directions"></i> Get Directions</a>
+          </div>
+          <div class="info-box">
+            <i class="far fa-clock"></i>
+            <h3>Opening Hours</h3>
+            <p>Monday - Sunday<br>8:00 AM – 10:00 PM</p>
+          </div>
+        </div>
+        <div class="col">
+          <div class="info-box book-card" style="text-align: center;">
+            <i class="fas fa-concierge-bell"></i>
+            <h3>Book Your Table</h3>
+            <p>Ready to experience authentic Kathiyawadi cuisine? Give us a call or send a WhatsApp message to reserve your spot.</p>
+            <div class="phone-number">
+              <i class="fab fa-whatsapp"></i> +91 99747 87601
+            </div>
+            <div style="display: flex; gap: 16px; justify-content: center; flex-wrap: wrap;">
+              <a href="tel:+919974787601" class="btn-primary"><i class="fas fa-phone-alt"></i> Call Now</a>
+              <a href="https://wa.me/919974787601?text=Hello%2C%20I%20want%20to%20book%20a%20table" class="btn-outline"><i class="fab fa-whatsapp"></i> WhatsApp</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="map-container">
+        <iframe src="https://maps.google.com/maps?q=Ahmedabad-Palanpur%20Highway%2C%20Near%20D%20Mart%2C%20Esbipura%2C%20Palanpur%2C%20Gujarat%20385001&t=&z=15&ie=UTF8&iwloc=&output=embed" allowfullscreen="" loading="lazy"></iframe>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact / Host Section (matches 3290.jpg, 3289.jpg) -->
+  <section id="contact">
+    <div class="container" style="text-align: center;">
+      <div class="info-box" style="max-width: 700px; margin: 0 auto;">
+        <i class="fas fa-heart" style="color:#c97e3a;"></i>
+        <h3>We'd love to host you</h3>
+        <p>Authentic taste, pure vegetarian, and traditional hospitality – come relish the flavours of Kathiyawad.</p>
+        <a href="https://wa.me/919974787601?text=I%20would%20like%20to%20book%20a%20table" class="btn-primary" style="margin-top: 20px;"><i class="fab fa-whatsapp"></i> Reserve via WhatsApp</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="container">
+    <p>© 2026 Hotel Atithi – An Authentic Kathiyawadi Experience. All rights reserved.</p>
+    <p style="margin-top: 12px; font-size: 0.85rem;">Ahmedabad-Palanpur Highway, Palanpur | +91 99747 87601</p>
+    <p style="margin-top: 8px; font-size: 0.75rem;">Designed with warmth & tradition.</p>
+  </div>
+</footer>
+
+<script>
+  // Mobile menu toggle
+  const menuToggle = document.getElementById('menuToggle');
+  const navLinks = document.getElementById('navLinks');
+  menuToggle.addEventListener('click', () => {
+    navLinks.classList.toggle('show');
+  });
+  // Smooth scroll
+  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function(e) {
+      e.preventDefault();
+      const targetId = this.getAttribute('href').substring(1);
+      if (targetId === "") return;
+      const target = document.getElementById(targetId);
+      if (target) {
+        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        navLinks.classList.remove('show');
+      }
+    });
+  });
+</script>
+</body>
+</html>
